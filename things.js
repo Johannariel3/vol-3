@@ -114,6 +114,29 @@ function pressYes() {
 function pressNo() {
     // Memunculkan pesan alert lucu saat tombol "No" diklik
     alert("Woiii kok pencet ini sih??!!?#%^&#@$ Pilih ulang ah!!!!!");
+}// Tambahkan fungsi ini di bagian paling bawah file things.js
+
+let noClickCount = 0;
+
+function pressNo() {
+    noClickCount++;
+    
+    if (noClickCount === 1) {
+        alert("Kok pilih No??? yang beneell aja boss");
+    } else if (noClickCount === 2) {
+        alert("Kok masih dipilih? ga sayang aku fiks!");
+    } else if (noClickCount === 3) {
+        alert("WOIIII KOK MASIH DIPILIH IHH??!!@$$^%$%#@!!??");
+        
+        // Menyembunyikan tombol "No" setelah 3x klik agar terpaksa klik Yes
+        const btnNo = document.querySelector('.btn-no');
+        if (btnNo) {
+            btnNo.style.display = 'none';
+        }
+        
+        // Reset hitungan kembali ke 0
+        noClickCount = 0;
+    }
 }
 
 // Di bagian paling bawah things.js, pastikan fungsi Back-nya seperti ini:
