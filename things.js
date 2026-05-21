@@ -120,19 +120,24 @@ function goDashboard() {
     window.location.href = "dashboard.html";
 }
 
-// Tambahkan ini agar setiap kali lagu berjalan di things.html, 
-// waktunya terus tersimpan (jaga-jaga jika user klik tombol back browser)
 const music = document.getElementById("bgm");
 if (music) {
+    music.addEventListener("canplay", () => {
+        const savedTime = localStorage.getItem("musicTime");
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+        if (localStorage.getItem("musicPlaying") === "true") {
+            music.play().catch(() => {});
+        }
+    }, { once: true });
+
     music.ontimeupdate = () => {
         localStorage.setItem("musicTime", music.currentTime);
     };
-}
 
-// fallback touch (iOS fix)
-if (music) {
     document.addEventListener("touchstart", () => {
-        if (music.paused) {
+        if (music.paused && localStorage.getItem("musicPlaying") === "true") {
             music.play().catch(() => {});
         }
     }, { once: true });

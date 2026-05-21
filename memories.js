@@ -1,14 +1,16 @@
 const music = document.getElementById("bgm");
 
 if (music) {
-    const savedTime = localStorage.getItem("musicTime");
-    if (savedTime) {
-        music.currentTime = parseFloat(savedTime);
-    }
+    music.addEventListener("canplay", () => {
+        const savedTime = localStorage.getItem("musicTime");
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
 
-    if (localStorage.getItem("musicPlaying") === "true") {
-        music.play().catch(() => {});
-    }
+        if (localStorage.getItem("musicPlaying") === "true") {
+            music.play().catch(() => {});
+        }
+    }, { once: true });
 
     music.ontimeupdate = () => {
         localStorage.setItem("musicTime", music.currentTime);
