@@ -27,6 +27,7 @@ body {
 
 .dashboard h1 {
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .dashboard p {
@@ -36,16 +37,18 @@ body {
 
 .cards {
     display: flex;
-    gap: 15px;
+    gap: 8px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .card {
     flex: 1;
-    padding: 20px;
+    padding: 15px 5px;
     background: #FFCCD6;
     border-radius: 15px;
     font-weight: bold;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -62,6 +65,7 @@ button {
     background: #FFB6C1;
     font-weight: bold;
     cursor: pointer;
+    width: 60%;
 }
 
 .photo-row {
