@@ -80,8 +80,14 @@ function openModal(index) {
     document.getElementById('modalBody').innerHTML = note.body;
     
     const btns = document.getElementById('answerBtns');
-    btns.style.display = note.special ? 'flex' : 'none';
     const card = document.getElementById('modalCard');
+    const btnNo = document.querySelector('.btn-no');
+    
+    // Munculkan kembali tombol No jika sebelumnya sempat tersembunyi
+    if (btnNo) {
+        btnNo.style.display = 'inline-block';
+    }
+    noClickCount = 0; // Reset hitungan klik "No"
     
     if (note.special) {
         card.classList.add('special');
@@ -106,16 +112,12 @@ function pressYes() {
     const music = document.getElementById("bgm");
     if (music) {
         localStorage.setItem("musicTime", music.currentTime);
-        localStorage.setItem("musicPlaying", "true"); // ← tambah ini
+        localStorage.setItem("musicPlaying", "true");
     }
     window.location.href = 'celebration.html';
 }
 
-function pressNo() {
-    // Memunculkan pesan alert lucu saat tombol "No" diklik
-    alert("Woiii kok pencet ini sih??!!?#%^&#@$ Pilih ulang ah!!!!!");
-}// Tambahkan fungsi ini di bagian paling bawah file things.js
-
+// FIX: Menyatukan fungsi pressNo agar tidak duplikat dan error
 let noClickCount = 0;
 
 function pressNo() {
@@ -128,20 +130,15 @@ function pressNo() {
     } else if (noClickCount === 3) {
         alert("WOIIII KOK MASIH DIPILIH IHH??!!@$$^%$%#@!!??");
         
-        // Menyembunyikan tombol "No" setelah 3x klik agar terpaksa klik Yes
         const btnNo = document.querySelector('.btn-no');
         if (btnNo) {
             btnNo.style.display = 'none';
         }
-        
-        // Reset hitungan kembali ke 0
         noClickCount = 0;
     }
 }
 
-// Di bagian paling bawah things.js, pastikan fungsi Back-nya seperti ini:
 function goDashboard() {
-    // Panggil fungsi yang ada di dashboard.js agar seragam
     if (typeof saveMusicTime === "function") {
         saveMusicTime();
     }
@@ -166,18 +163,14 @@ if (music) {
         }
     }, { once: true });
 
-    // HAPUS setInterval yang lama, ganti dengan ini:
+    // FIX SISTEM PENGAMAN: Menyimpan waktu hanya jika lagu berputar aktif
     setInterval(() => {
-    // PENGAMAN: Hanya simpan jika musik ada, TIDAK sedang pause, 
-    // dan detiknya berjalan (di atas 0)
         if (music && !music.paused && music.currentTime > 0) {
             localStorage.setItem("musicTime", music.currentTime);
         }
     }, 1000);
 
-    music.ontimeupdate = () => {
-        localStorage.setItem("musicTime", music.currentTime);
-    };
+    // Bagian music.ontimeupdate yang merusak waktu SUDAH DIHAPUS dari sini.
 
     document.addEventListener("touchstart", () => {
         if (music.paused && localStorage.getItem("musicPlaying") === "true") {
