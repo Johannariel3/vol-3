@@ -27,11 +27,12 @@ if (music) {
         }
     }, { once: true });
 
-    // Simpan posisi lagu setiap 1 detik
+    // HAPUS setInterval yang lama, ganti dengan ini:
     setInterval(() => {
-    // Hanya simpan jika musik aktif, tidak sedang pause, dan detiknya valid
-        if (bgm && !bgm.paused && bgm.currentTime > 0) {
-            localStorage.setItem("musicTime", bgm.currentTime);
+    // PENGAMAN: Hanya simpan jika musik ada, TIDAK sedang pause, 
+    // dan detiknya berjalan (di atas 0)
+        if (music && !music.paused && music.currentTime > 0) {
+            localStorage.setItem("musicTime", music.currentTime);
         }
     }, 1000);
 }
