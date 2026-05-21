@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const isDateCorrect = correctDates.includes(dateValue);
 
         if (isNameCorrect && isDateCorrect) {
-            localStorage.setItem("musicPlaying", "yes");
+            localStorage.setItem("musicPlaying", "true");
             localStorage.setItem("bgmTime", "0");
             window.location.href = "dashboard.html";
         } else {

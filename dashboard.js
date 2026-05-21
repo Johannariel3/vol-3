@@ -19,10 +19,23 @@ window.addEventListener("load", () => {
         console.log("Autoplay diblokir browser");
     });
 
-    // fallback touch (iOS fix)
+    music.addEventListener("play", () => {
+        localStorage.setItem("musicPlaying", "true");
+    });
+
+    music.addEventListener("pause", () => {
+        localStorage.setItem("musicPlaying", "false");
+    });
+
+    setInterval(() => {
+        if (!music.paused) {
+            localStorage.setItem("musicTime", music.currentTime);
+        }
+    }, 1000);
+
     document.addEventListener("touchstart", () => {
-        if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
-            bgm.play().catch(() => {});
+        if (music.paused && localStorage.getItem("musicPlaying") === "true") {
+            music.play().catch(() => {});
         }
     }, { once: true });
 });
@@ -71,10 +84,9 @@ function BackToDashboard() {
 
 function logout() {
 
-    // hapus data musik
     localStorage.removeItem("musicTime");
-
-    // kembali ke login
+    localStorage.removeItem("musicPlaying");
+    localStorage.removeItem("bgmTime");  
     window.location.href = "index.html";
 }
 
