@@ -8,13 +8,19 @@ window.addEventListener("load", () => {
 
     music.addEventListener("canplay", () => {
         const savedTime = localStorage.getItem("musicTime");
-        if (savedTime) {
-            music.currentTime = parseFloat(savedTime); // ← parseFloat penting!
+        if (savedTime && parseFloat(savedTime) > 0) {
+            setTimeout(() => {
+                music.currentTime = parseFloat(savedTime);
+                music.play().catch(() => {
+                    console.log("Autoplay diblokir browser");
+                });
+            }, 300);
+        } else {
+            music.play().catch(() => {
+                console.log("Autoplay diblokir browser");
+            });
         }
-        music.play().catch(() => {
-            console.log("Autoplay diblokir browser");
-        });
-    }, { once: true }); // ← once: true agar tidak dipanggil berkali-kali
+    }, { once: true });
 
     music.addEventListener("play", () => {
         localStorage.setItem("musicPlaying", "true");

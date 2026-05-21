@@ -3,11 +3,17 @@ const music = document.getElementById("bgm");
 if (music) {
     music.addEventListener("canplay", () => {
         const savedTime = localStorage.getItem("musicTime");
-        if (savedTime) {
-            music.currentTime = parseFloat(savedTime);
-        }
-        if (localStorage.getItem("musicPlaying") === "true") {
-            music.play().catch(() => {});
+        if (savedTime && parseFloat(savedTime) > 0) {
+            setTimeout(() => {
+                music.currentTime = parseFloat(savedTime);
+                if (localStorage.getItem("musicPlaying") === "true") {
+                    music.play().catch(() => {});
+                }
+            }, 300);
+        } else {
+            if (localStorage.getItem("musicPlaying") === "true") {
+                music.play().catch(() => {});
+            }
         }
     }, { once: true });
 
