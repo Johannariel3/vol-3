@@ -26,6 +26,14 @@ if (music) {
             music.play().catch(() => {});
         }
     }, { once: true });
+
+    // Simpan posisi lagu setiap 1 detik
+    setInterval(() => {
+    // Hanya simpan jika musik aktif, tidak sedang pause, dan detiknya valid
+        if (bgm && !bgm.paused && bgm.currentTime > 0) {
+            localStorage.setItem("musicTime", bgm.currentTime);
+        }
+    }, 1000);
 }
 
 function goDashboard() {
