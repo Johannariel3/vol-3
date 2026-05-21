@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background: linear-gradient(135deg, #ffc9d6, #ffb6c9);
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Hearts Background */
+
+body::before {
+    content: "♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡";
+    position: fixed;
+    inset: 0;
+
+    font-size: 30px;
+    color: rgba(255, 105, 145, 0.08);
+
+    line-height: 120px;
+    letter-spacing: 40px;
+    word-break: break-all;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Main Wrapper */
+
+.letter-wrap {
+    width: 100%;
+    max-width: 1000px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Wax Seal */
+
+.wax-seal {
+    width: 78px;
+    height: 78px;
+
+    background: radial-gradient(circle at 30% 30%, #ff7da2, #e93b72);
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: -38px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 30px;
+
+    box-shadow: 0 10px 25px rgba(255, 105, 145, 0.45);
+
+    border: 4px solid #ff5f8f;
+
+    z-index: 10;
+}
+
+/* Letter Container */
+
+.letter-container {
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 35px;
+
+    padding: 80px 70px 60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 40px rgba(255, 105, 145, 0.25),
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Top Pink Line */
+
+.letter-container::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 6px;
+
+    background: linear-gradient(
+        90deg,
+        #ffbfd0,
+        #ff6f91,
+        #ffbfd0
+    );
+}
+
+/* Make Content Above Lines */
+
+.letter-container>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ruled Notebook Lines */
+
+.ruled-lines {
+    position: absolute;
+
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.ruled-lines::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 46px,
+        rgba(255, 182, 193, 0.45) 47px
+    );
+}
+
+/* Date */
+
+.letter-date {
+    text-align: right;
+
+    color: #ff9ab2;
+
+    font-size: 18px;
+    font-style: italic;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 40px;
+
+    font-weight: 500;
+}
+
+/* Greeting */
+
+.letter-salutation {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 58px;
+    font-style: italic;
+
+    color: #ff6f91;
+
+    margin-bottom: 30px;
+
+    font-weight: 600;
+}
+
+/* Letter Body */
+
+.letter-body {
+    font-size: 20px;
+
+    line-height: 2.1;
+
+    color: #555;
+
+    font-weight: 300;
+}
+
+.letter-body p {
+    margin-bottom: 35px;
+}
+
+/* Drop Cap */
+
+.drop-cap::first-letter {
+    float: left;
+
+    font-size: 4.5em;
+
+    line-height: 0.8;
+
+    padding-right: 10px;
+
+    font-family: 'Playfair Display', serif;
+
+    color: #ff6f91;
+
+    font-weight: 600;
+}
+
+/* Ornament */
+
+.ornament {
+    text-align: center;
+
+    font-size: 30px;
+
+    color: #ffb6c1;
+
+    letter-spacing: 10px;
+
+    margin: 40px 0;
+}
+
+/* Closing */
+
+.closing-wrap {
+    margin-top: 50px;
+}
+
+.closing-phrase {
+    color: #ff9ab2;
+
+    font-style: italic;
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 55px;
+
+    color: #ff6f91;
+
+    font-style: italic;
+
+    border-bottom: 2px solid #ffb6c1;
+
+    display: inline-block;
+
+    padding-bottom: 8px;
+}
+
+/* Postscript */
+
+.postscript {
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 2px dashed #ffd3dd;
+    color: #ff97ad;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+/* Bottom Decoration */
+
+.bottom-deco {
+    text-align: center;
+    margin-top: 45px;
+    color: #ffb6c1;
+    font-size: 28px;
+    letter-spacing: 12px;
+}
+
+/* Page Number */
+
+.page-number {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
+    color: #ffb6c1;
+    font-style: italic;
+    font-size: 20px;
+}
+
+/* Button */
+
+.back-btn {
+    display: block;
+    margin: 40px auto 0;
+    border: none;
+    background: #ff6f91;
+    color: white;
+    padding: 18px 50px;
+    border-radius: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    background: #ff5d85;
+    box-shadow: 0 10px 20px rgba(255, 105, 145, 0.35);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .letter-container {
+        padding: 70px 30px 50px;
+    }
+
+    .letter-salutation {
+        font-size: 40px;
+    }
+
+    .letter-body {
+        font-size: 17px;
+    }
+
+    .signature {
+        font-size: 38px;
+    }
+
+    .postscript {
+        font-size: 16px;
+    }
+
+    .back-btn {
+        width: 100%;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,122 @@
+/* RESET & BODY */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #FFCCD6, #FFB6C1);
+}
+
+/* LOGIN CARD */
+.login{
+    width: 400px;
+    height: 500px;
+    background-image: url("pict.jpg");
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* FORM */
+form{
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(25px) brightness(40%);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* TITLE */
+h1{
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+/* LABEL */
+label{
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+/* INPUT */
+input{
+    background: rgba(255, 255, 255, 0.3);
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 15px;
+    border: none;
+    margin-bottom: 20px;
+    color: white;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+/* BUTTON */
+button{
+    background-color: #FFCCD6;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+button:hover{
+    background-color: #FFB6C1;
+    transform: translateY(-2px);
+}
+
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 60px 0 15px; /* ruang untuk Show */
+    border: none;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    outline: none;
+}
+
+.toggle {
+    position: absolute;
+    right: 15px;
+    top: 33%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+}
+
+.toggle:hover {
+    opacity: 1;
+}

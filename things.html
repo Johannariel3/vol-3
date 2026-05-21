@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌷 Khaira's Page.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="things.css">
+</head>
+<body>
+
+    <audio id="bgm" loop>
+        <source src="westlife.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="page-header">
+        <h1>Little Things For You 💌</h1>
+        <p>tap an envelope to open a note just for you</p>
+    </div>
+
+    <div class="envelopes-grid" id="envelopesGrid">
+        </div>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-card" id="modalCard">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-icon" id="modalIcon"></div>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-text" id="modalBody"></div>
+            <div class="answer-btns" id="answerBtns">
+                <button class="btn-no" onclick="pressNo()">No 🥺</button>
+                <button class="btn-yes" onclick="pressYes()">Yes 💖</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back to Home</button>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="things.js"></script>
+</body>
+</html>

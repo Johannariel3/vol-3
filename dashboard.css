@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFCCD6, #FFB6C1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    background: rgba(255, 255, 255, 0.85);
+    width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.dashboard h1 {
+    margin-bottom: 10px;
+}
+
+.dashboard p {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.cards {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    padding: 20px;
+    background: #FFCCD6;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: #FFB6C1;
+    transform: translateY(-5px);
+}
+
+button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #FFB6C1;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.photo-row {
+    display: flex;
+    justify-content: center;   /* tepat di tengah */
+    align-items: center;
+    gap: 16px;                 /* jarak antar foto */
+    margin-bottom: 30px;
+}
+
+/* wrapper opsional (biar lebih rapi) */
+.photo-row img {
+    width: 110px;
+    aspect-ratio: 1 / 1;       /* PAKSA 1:1 */
+    object-fit: cover;         /* potong rapi tanpa distorsi */
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 6px;
+    background: white;
+}
+
+/* efek hover lucu */
+.photo-row img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}

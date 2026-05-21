@@ -1,0 +1,234 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFCCD6, #FFB6C1, #ffd6e0);
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem 1rem;
+}
+
+.page-header { text-align: center; margin-bottom: 2.5rem; }
+.page-header h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #FF6F91; }
+
+/* GRID SYSTEM */
+.envelopes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+    .envelopes-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .envelope-item:nth-child(7) {
+        grid-column: 2;
+    }
+
+    .envelope-item:nth-child(8) {
+        grid-column: 1 / span 3;
+    }
+}
+
+.envelope-item { cursor: pointer; transition: 0.3s; text-align: center; }
+.envelope-item:hover { transform: translateY(-5px); }
+
+.envelope {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(255, 111, 145, 0.2);
+    font-size: 2rem;
+}
+
+.envelope-label {
+    margin-top: 10px;
+    color: #FF6F91;
+    font-weight: 500;
+}
+
+/* ================= MODAL ================= */
+
+/*
+ * FIX UTAMA: overlay sekarang yang handle scroll, bukan card.
+ * align-items: flex-start + padding + overflow-y: auto
+ * agar konten panjang bisa di-scroll di HP maupun desktop.
+ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 192, 203, 0.4);
+    backdrop-filter: blur(6px);
+
+    display: none;
+    align-items: flex-start;      /* ← ubah dari center ke flex-start */
+    justify-content: center;
+
+    overflow-y: auto;             /* ← tambahan: overlay yang scroll */
+    padding: 1.5rem 1rem;         /* ← tambahan: breathing room atas bawah */
+
+    z-index: 999;
+    -webkit-overflow-scrolling: touch; /* ← smooth scroll di iOS */
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* CARD */
+.modal-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 420px;
+    line-height: 1.5;
+
+    /* HAPUS max-height & overflow dari sini */
+    /* Biarkan card tumbuh mengikuti isi */
+    height: auto;
+    margin: auto;                 /* ← supaya tetap center jika konten pendek */
+
+    text-align: center;
+    position: relative;
+
+    box-shadow: 0 20px 60px rgba(255, 182, 193, 0.35);
+
+    animation: popModal 0.25s ease;
+}
+
+.modal-card p{
+    margin-bottom: 1rem;
+}
+
+@keyframes popModal {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ================= CLOSE BUTTON ================= */
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ffd1dc;
+
+    color: #ff4f8b;
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.2s ease;
+}
+
+.modal-close:hover  { background: #ffe4f0; transform: scale(1.1); }
+.modal-close:active { transform: scale(0.95); }
+
+/* ================= ANSWER BUTTONS ================= */
+
+.answer-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+    flex-wrap: wrap;              /* ← agar tidak overflow di HP kecil */
+}
+
+.btn-yes {
+    background: #FFB6C1;
+    color: white;
+    border: none;
+    padding: 12px 45px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+}
+
+.btn-no {
+    background: #f0f0f0;
+    color: #888;
+    border: 1px solid #ddd;
+    padding: 12px 35px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-yes:hover { background: #FF6F91; transform: translateY(-2px); }
+.btn-no:hover  { background: #e5e5e5; color: #555; transform: translateY(-2px); }
+
+/* ================= SPECIAL ENVELOPE (ke-8) ================= */
+
+.envelope-item:nth-child(8) {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+}
+
+.envelope-item:nth-child(8) .envelope-body {
+    padding-bottom: 30% !important;
+    background: linear-gradient(135deg, #fff0f3, #ffe0ea) !important;
+    border: 2px solid #FF6F91 !important;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.back-btn {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 15px;
+    background: #FF6F91;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #FF4F7A;
+    transform: translateY(-2px);
+}
+
+/* ================= MOBILE ADJUSTMENTS (≤480px) ================= */
+
+@media (max-width: 480px) {
+    .page-header h1 { font-size: 2.2rem; }
+
+    .modal-overlay {
+        padding: 0.75rem 0.75rem;
+    }
+
+    .modal-card {
+        padding: 2rem 1.25rem;
+        border-radius: 20px;
+    }
+
+    .btn-yes, .btn-no {
+        padding: 11px 30px;
+        font-size: 0.9rem;
+    }
+}
