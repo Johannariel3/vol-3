@@ -35,6 +35,13 @@ document.addEventListener("click", () => {
   }
 }, { once: true });
 
+// fallback touch (iOS fix)
+document.addEventListener("touchstart", () => {
+  if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
+    bgm.play().catch(() => {});
+  }
+}, { once: true });
+
 // tombol toggle
 function toggleMusic() {
   if (bgm.paused) {

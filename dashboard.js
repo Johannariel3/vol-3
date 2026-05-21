@@ -18,6 +18,13 @@ window.addEventListener("load", () => {
     music.play().catch(() => {
         console.log("Autoplay diblokir browser");
     });
+
+    // fallback touch (iOS fix)
+    document.addEventListener("touchstart", () => {
+        if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
+            bgm.play().catch(() => {});
+        }
+    }, { once: true });
 });
 
 

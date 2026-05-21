@@ -124,3 +124,12 @@ if (music) {
         localStorage.setItem("musicTime", music.currentTime);
     };
 }
+
+// fallback touch (iOS fix)
+if (music) {
+    document.addEventListener("touchstart", () => {
+        if (music.paused) {
+            music.play().catch(() => {});
+        }
+    }, { once: true });
+}

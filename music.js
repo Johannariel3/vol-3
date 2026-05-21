@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
         bgm.play().catch(() => {});
     }
 
+     // fallback touch (iOS fix)
+    document.addEventListener("touchstart", () => {
+        if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
+            bgm.play().catch(() => {});
+        }
+        }, { once: true });
+
     // simpan posisi setiap detik
     setInterval(() => {
         if (!bgm.paused) {

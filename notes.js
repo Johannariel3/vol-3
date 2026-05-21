@@ -20,4 +20,11 @@ window.addEventListener("load", () => {
     }
 
     music.play().catch(() => {});
+
+    // fallback touch (iOS fix)
+    document.addEventListener("touchstart", () => {
+        if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
+            bgm.play().catch(() => {});
+        }
+    }, { once: true });
 });
