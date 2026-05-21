@@ -103,7 +103,11 @@ function closeModalOutside(e) {
 }
 
 function pressYes() {
-    // simpan state musik sebelum pindah (opsional)
+    const music = document.getElementById("bgm");
+    if (music) {
+        localStorage.setItem("musicTime", music.currentTime);
+        localStorage.setItem("musicPlaying", "true"); // ← tambah ini
+    }
     window.location.href = 'celebration.html';
 }
 
