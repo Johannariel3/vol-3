@@ -126,10 +126,8 @@ if (music) {
 }
 
 // fallback touch (iOS fix)
-if (music) {
-    document.addEventListener("touchstart", () => {
-        if (music.paused) {
-            music.play().catch(() => {});
-        }
-    }, { once: true });
-}
+document.addEventListener("touchstart", () => {
+  if (bgm.paused && localStorage.getItem("musicPlaying") === "true") {
+    bgm.play().catch(() => {});
+  }
+}, { once: true });
