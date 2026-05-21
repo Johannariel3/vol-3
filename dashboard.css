@@ -18,7 +18,7 @@ body {
     background: rgba(255, 255, 255, 0.85);
     width: 90%;
     max-width: 500px;
-    padding: 40px 20px;
+    padding: 30px 15px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -37,7 +37,7 @@ body {
 
 .cards {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 30px;
     width: 100%;
 }
