@@ -111,6 +111,11 @@ function pressYes() {
     window.location.href = 'celebration.html';
 }
 
+function pressNo() {
+    // Memunculkan pesan alert lucu saat tombol "No" diklik
+    alert("Woiii kok pencet ini sih??!!?#%^&#@$ Pilih ulang ah!!!!!");
+}
+
 // Di bagian paling bawah things.js, pastikan fungsi Back-nya seperti ini:
 function goDashboard() {
     // Panggil fungsi yang ada di dashboard.js agar seragam
