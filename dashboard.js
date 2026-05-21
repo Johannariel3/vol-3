@@ -6,18 +6,15 @@ window.addEventListener("load", () => {
 
     const music = document.getElementById("bgm");
 
-    // ambil posisi lagu terakhir
-    const savedTime = localStorage.getItem("musicTime");
-
-    // lanjutkan lagu dari posisi terakhir
-    if (savedTime) {
-        music.currentTime = savedTime;
-    }
-
-    // play music
-    music.play().catch(() => {
-        console.log("Autoplay diblokir browser");
-    });
+    music.addEventListener("canplay", () => {
+        const savedTime = localStorage.getItem("musicTime");
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime); // ← parseFloat penting!
+        }
+        music.play().catch(() => {
+            console.log("Autoplay diblokir browser");
+        });
+    }, { once: true }); // ← once: true agar tidak dipanggil berkali-kali
 
     music.addEventListener("play", () => {
         localStorage.setItem("musicPlaying", "true");
