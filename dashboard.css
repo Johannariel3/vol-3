@@ -22,6 +22,7 @@ body {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
 
 .dashboard h1 {
@@ -73,7 +74,8 @@ button {
 
 /* wrapper opsional (biar lebih rapi) */
 .photo-row img {
-    width: 110px;
+    width: 28%;
+    max-width: 110px;
     aspect-ratio: 1 / 1;       /* PAKSA 1:1 */
     object-fit: cover;         /* potong rapi tanpa distorsi */
     border-radius: 20px;
