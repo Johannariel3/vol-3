@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #FFCCD6, #FFB6C1);
+    padding: 2rem 1rem;
 }
 
 /* LOGIN CARD */
