@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isNameCorrect && isDateCorrect) {
             localStorage.setItem("musicPlaying", "yes");
+            localStorage.setItem("bgmTime", "0");
             window.location.href = "dashboard.html";
         } else {
             alert("Coba lagi boss");
