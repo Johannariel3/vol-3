@@ -37,3 +37,11 @@ if (music) {
         }
     }, { once: true });
 }
+
+function BackToDashboard() {
+    const music = document.getElementById("bgm");
+    if (music) {
+        localStorage.setItem("musicTime", music.currentTime);
+    }
+    window.location.href = "dashboard.html";
+}

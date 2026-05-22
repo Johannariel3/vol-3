@@ -139,8 +139,9 @@ function pressNo() {
 }
 
 function goDashboard() {
-    if (typeof saveMusicTime === "function") {
-        saveMusicTime();
+    const music = document.getElementById("bgm");
+    if (music) {
+        localStorage.setItem("musicTime", music.currentTime);
     }
     window.location.href = "dashboard.html";
 }

@@ -4,15 +4,20 @@ const bgm = document.getElementById("bgm");
 const savedTime = localStorage.getItem("musicTime");
 const isPlaying = localStorage.getItem("musicPlaying");
 
-// set waktu terakhir
-if (savedTime) {
-  bgm.currentTime = parseFloat(savedTime);
-}
-
-// autoplay sesuai state
-if (isPlaying === "true") {
-  bgm.play().catch(() => {});
-}
+bgm.addEventListener("canplay", () => {
+  if (savedTime && parseFloat(savedTime) > 0) {
+    setTimeout(() => {
+      bgm.currentTime = parseFloat(savedTime);
+      if (isPlaying === "true") {
+        bgm.play().catch(() => {});
+      }
+    }, 300);
+  } else {
+    if (isPlaying === "true") {
+      bgm.play().catch(() => {});
+    }
+  }
+}, { once: true });
 
 // simpan posisi lagu setiap 1 detik
 setInterval(() => {
@@ -49,4 +54,11 @@ function toggleMusic() {
   } else {
     bgm.pause();
   }
+}
+
+function goBack() {
+    if (bgm) {
+        localStorage.setItem("musicTime", bgm.currentTime);
+    }
+    window.location.href = 'things.html';
 }
